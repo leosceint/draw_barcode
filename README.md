@@ -1,7 +1,7 @@
-# Рисуем бинарный штрих-код
+п»ї# Р РёСЃСѓРµРј Р±РёРЅР°СЂРЅС‹Р№ С€С‚СЂРёС…-РєРѕРґ
 
-Для проекта [make_barcode](https://github.com/leosceint/make_barcode)
+Р”Р»СЏ РїСЂРѕРµРєС‚Р° [make_barcode](https://github.com/leosceint/make_barcode)
 
-# Пример работы
+# РџСЂРёРјРµСЂ СЂР°Р±РѕС‚С‹
 
 ![image info](./DrawBarcodeResult.png)
