@@ -1,0 +1,10 @@
+[Dd]ebug/
+[Rr]elease/
+ipch/
+.vs/
+*.suo
+*.user
+*.obj
+*.exe
+*.pch
+*.ilk
