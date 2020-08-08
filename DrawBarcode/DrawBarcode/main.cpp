@@ -92,7 +92,7 @@ int main()
 	cout << "<OBJECT CLASS>	:" << object_class << endl;
 
     Barcode barcode(
-					32,	//	Bits to image number число бит на номер картинки 
+					32,	//	Bits to image number
 					16,	//	Bits to distance to target (in meters)
 					16	//	Bits to class of tracked object
 					);
