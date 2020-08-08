@@ -7,11 +7,11 @@
 using namespace std;
 
 
-// Устанавливаем бит в пиксель
+// Set bit in pixel
 unsigned char* SetPixelBit(
-							unsigned char* pixel,	// указатель на пиксель
-							int pixel_channels,		// канальность пикселя
-							unsigned char char_bit	// бит, который пишем
+							unsigned char* pixel,	// Pointer to pixel
+							int pixel_channels,		// Count of color components in pixel
+							unsigned char char_bit	// Bit to write in pixel
 							)
 {
 	unsigned char* temp_pixel = pixel;
@@ -25,13 +25,13 @@ unsigned char* SetPixelBit(
 	return temp_pixel;
 }
 
-// Только рисуем штрих-код. Делаем его в Barcode::MakeBarcode (класс, который пойдет в блюпринт Unreal)
+// There we only draw barcode. To make barcode use Barcode::MakeBarcode (Barcode class -> blueprints in Unreal)
 unsigned char* DrawBarcode(
-							unsigned char* img,			// указатель на картинку
-							int* img_dimensions,		// размерность = [ширина, высота, канальность] 
-							int pixels_per_bit,			// пиксели на бит (ширина линии штрих-кода)
-							std::vector<bool> barcode,	// штрих-код
-							int thickness = 1			// толщина линии штрих-кода
+							unsigned char* img,			// Pointer to image
+							int* img_dimensions,		// Image dimension = [width, height, count of color components] 
+							int pixels_per_bit,			// Width of barcode bit in pixels
+							std::vector<bool> barcode,	// Barcode that we make in Barcode::MakeBarcode
+							int thickness = 1			// Thickness of Barcode (count of image lines)
 							)
 {
 	unsigned char* temp_img = img;
@@ -92,14 +92,14 @@ int main()
 	cout << "<OBJECT CLASS>	:" << object_class << endl;
 
     Barcode barcode(
-					32,	//	число бит на номер картинки 
-					16,	//	число бит на дальность (в метрах)
-					16	//	число бит на приоритет (отслеживаемый класс)
+					32,	//	Bits to image number число бит на номер картинки 
+					16,	//	Bits to distance to target (in meters)
+					16	//	Bits to class of tracked object
 					);
     std::vector<bool> barcode_result = barcode.MakeBarcode(
-														   img_number,	// номер картинки
-														   distance,	// дальность в метрах
-														   object_class	// класс объекта
+														   img_number,	// Image number
+														   distance,	// Distance in meters
+														   object_class	// Object class
 														   );
 
     cout << endl;
@@ -125,11 +125,11 @@ int main()
 	int img_dimensions[] = {img_width, img_height, img_channels};
 
 	img = DrawBarcode(
-					  img,				// картинка
-					  img_dimensions,	// размерность = [ширина, высота, канальность] 
-					  10,				// пиксели на бит (ширина линии штрих-кода)
-					  barcode_result,	// штрих-код
-					  7					// толщина линии штрих-кода
+					  img,				// Image that was loaded
+					  img_dimensions,	// Image dimensions = [width, height, count of colors] 
+					  10,				// Width of barcode bit in pixels
+					  barcode_result,	// Barcode that we make in Barcode::MakeBarcode
+					  3					// Thickness of Barcode (count of image lines)
 					  );
 
 	const char* result_name = "9996.bmp";
